@@ -1,48 +1,45 @@
 var gulp = require('gulp');
+var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
-var browserSync = require('browser-sync').create();
 var gulpIf = require('gulp-if');
-var uglify = require('gulp-uglify');
-var useref = require('gulp-useref');
 
-gulp.task('useref', function(){
-  return gulp.src('app/*.html')
-    .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
-    // Minifies only if it's a CSS file
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist'))
+var config = {
+    paths: {
+        index: 'index.html',
+        html: 'app/**/*.html',
+        js: 'app/**/*.js',
+        css: 'app/**/*.css',
+        sass: 'app/**/*.+(scss|sass)'
+    }
+};
+
+gulp.task('css', function(){
+    return gulp.src(config.paths.css)
+        .pipe(browserSync.reload({
+          stream: true
+        }))
 });
 
-//** perfect
+//** perfect ** we shud give alternate path of the build css >> <link rel="stylesheet" href="app/app.style.css">
 gulp.task('sass', function(){
-  return gulp.src('app/**/*.+(scss|sass)') //to compile both sass an scss format files
+  return gulp.src(config.paths.sass) //to compile both sass an scss format files
     .pipe(sass()) // Using gulp-sass
-    .pipe(concat('bundle_sass.css')) 
-    .pipe(gulpIf('*.css', cssnano()))
-    .pipe(gulp.dest('dist/sass_css'))
+    .pipe(concat('app.style.css')) 
+    .pipe(gulp.dest('app'))
     .pipe(browserSync.reload({
       stream: true
     }))
 });
 
-//** perfect if only css
-gulp.task('css', function(){
-    return gulp.src('app/**/*.css')
-        .pipe(concat('bundle.css'))
-        .pipe(gulpIf('*.css', cssnano()))
-        .pipe(gulp.dest('dist/justCss'))
-        .pipe(browserSync.reload({
-          stream: true
-        }))
+gulp.task('watch', function(){
+    gulp.watch(config.paths.html, browserSync.reload);
+    gulp.watch(config.paths.css, ['css']);
+    gulp.watch(config.paths.sass, ['sass']);
+    gulp.watch(config.paths.js, browserSync.reload);
 })
 
-gulp.task('watch', ['sass','css','browserSync'],function(){
-    gulp.watch('app/**/*.+(scss|sass)', ['sass']);
-    gulp.watch('app/**/*.css', ['css'])
-})
+gulp.task('serve', ['watch', 'browserSync']); 
 
 gulp.task('browserSync', function(){
     browserSync.init({

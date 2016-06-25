@@ -32,10 +32,15 @@
             controllerAs: 'vm'
         })
         .state('teacherState', {
-            url: '/teacher',
+            url: '/teacher/:id',
             templateUrl: 'app/module/teacher/teacher.tmpl.html',
             controller: 'TeacherController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                myData : function(CourseRepositoryService){
+                    return CourseRepositoryService.getAllCourses();
+                }
+            }
         });
         
         $urlRouterProvider.otherwise('/course');

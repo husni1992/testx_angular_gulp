@@ -5,11 +5,13 @@
         .module('teacher.module')
         .controller('TeacherController', TeacherController);
     
-    TeacherController.$inject = [];
+    TeacherController.$inject = ['$stateParams', 'myData'];
     /* @ngInject */
-    function TeacherController(){
+    function TeacherController($stateParams, myData){
         var vm = this;
+        vm.stateParam = $stateParams.id;
         vm.controller = 'TeacherController';
+        vm.dataArray = myData;
     }
     
 })()

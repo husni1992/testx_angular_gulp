@@ -2,17 +2,16 @@
     <head>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">            
+
+        
 <!--
-        <link rel="stylesheet" href="dist/sass_css/bundle.css">
-        <link rel="stylesheet" href="dist/justCss/bundle.css">
+        <link rel="stylesheet" href="app/module/student/student.scss">        
+        <link rel="stylesheet" href="app/module/teacher/teacher.scss">      
 -->
-    
-     <!--build:scss css/styles.min.css-->
-        <link rel="stylesheet" href="app/module/course/course.css">
-        <link rel="stylesheet" href="app/module/student/student.scss">
-        <link rel="stylesheet" href="app/module/student/justcssStyle.css">
-        <link rel="stylesheet" href="app/module/teacher/teacher.scss">
-     <!--endbuild-->       
+     <link rel="stylesheet" href="app/app.style.css">
+      
+      <link rel="stylesheet" href="app/module/course/course.css">
+      <link rel="stylesheet" href="app/module/student/student.css">
        
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
@@ -22,6 +21,8 @@
         
         <script src="app/app.module.js"></script>
         <script src="app/app.route.js"></script>
+        
+        <script src="app/common/services/course.repository.service.js"></script>
         
         <script src="app/module/course/course.module.js"></script>
         <script src="app/module/course/course.controller.js"></script>
@@ -37,7 +38,33 @@
         <script src="app/module/teacher/teacher.controller.js"></script>
         <script src="app/module/teacher/teacher.service.js"></script>
     </head>
-    <body>
+    <body style="background-color: #C6D9F1">
+       
+       
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluids">
+            <span class="navbar-brand">Online Store Management</span>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a ui-sref="studentState">Student</a></li>
+                    <li><a ui-sref="teacherState"><i class="glyphicon glyphicon-plus"></i>Teacher</a></li>
+                    <li><a ui-sref="courseState">Course</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-2 col-xs-5" ui-view="viewA"></div>
+                <div class="col-md-9 col-sm-10 col-xs-7" ui-view="viewB"></div>
+            </div>
+        </div>
+        
+        
+        <ui-view></ui-view>
+       
+       
+<!--
         <button ui-sref="studentState">Student</button>
         <button ui-sref="teacherState">Teacher</button>
         <button ui-sref="courseState">Course</button>
@@ -50,11 +77,8 @@
             </div>
         </div>
         
-<!--
-        <div ui-view="viewA" style="float:left; margin: 0 20px 0 20px"></div>
-        <div ui-view="viewB"></div>
--->
         
         <ui-view></ui-view>
+-->
     </body>
 </html>
