@@ -1,0 +1,52 @@
+<html ng-app="app">
+    <head>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">    
+        
+        <link rel="stylesheet" href="dist/sass_css/bundle.css">
+        <link rel="stylesheet" href="dist/justCss/bundle.css">
+       
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+        
+        <!-- Latest compiled and minified JavaScript -->
+<!--        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+        
+        <script src="app/app.module.js"></script>
+        <script src="app/app.route.js"></script>
+        
+        <script src="app/module/course/course.module.js"></script>
+        <script src="app/module/course/course.controller.js"></script>
+        <script src="app/module/course/views/viewA/viewA.controller.js"></script>
+        <script src="app/module/course/views/viewB/viewB.controller.js"></script>
+        <script src="app/module/course/course.service.js"></script>
+        
+        <script src="app/module/student/student.module.js"></script>
+        <script src="app/module/student/student.controller.js"></script>
+        <script src="app/module/student/student.service.js"></script>
+        
+        <script src="app/module/teacher/teacher.module.js"></script>
+        <script src="app/module/teacher/teacher.controller.js"></script>
+        <script src="app/module/teacher/teacher.service.js"></script>
+    </head>
+    <body>
+        <button ui-sref="studentState">Student</button>
+        <button ui-sref="teacherState">Teacher</button>
+        <button ui-sref="courseState">Course</button>
+        <hr>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-2 col-xs-5" ui-view="viewA"></div>
+                <div class="col-md-9 col-sm-10 col-xs-7" ui-view="viewB"></div>
+            </div>
+        </div>
+        
+<!--
+        <div ui-view="viewA" style="float:left; margin: 0 20px 0 20px"></div>
+        <div ui-view="viewB"></div>
+-->
+        
+        <ui-view></ui-view>
+    </body>
+</html>

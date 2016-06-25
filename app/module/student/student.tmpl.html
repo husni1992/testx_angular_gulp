@@ -1,0 +1,8 @@
+<h3>{{vm.controller}}</h3>
+
+
+<button class="btn btn-default" ng-click="vm.toggleShow()">{{vm.showImage ? 'Hide' : 'Show'}}</button>
+<br>
+<div style="display:inline-block;padding:5px; border: 1px solid grey">
+    <img width="200px" ng-if="vm.showImage" ng-src="http://www.jaguar.in/Images/XJ_EMO_TRAILER_JDX-videostills-device_desktop-1366x769_tcm163-143517_desktop_1366x769.jpg?v=4" title="not found" alt="">
+</div>
