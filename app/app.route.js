@@ -41,7 +41,26 @@
                     return CourseRepositoryService.getAllCourses();
                 }
             }
-        });
+        })
+        .state('teacherState.namitha', {
+            url: '/namitha',
+            templateUrl: 'app/module/teacher/namitha.html',
+        })
+        
+        .state('paymentState', {
+//            abstract: true,
+            url:'/payment/settle/:paymentId',
+            templateUrl: 'app/module/payment/payment.tmpl.html',
+            controller: 'PaymentController'
+        })
+        .state('paymentState.cash', {
+            url: '/cash',
+            templateUrl: 'app/module/payment/cash/payment.cash.html'
+        })
+        .state('paymentState.cheque', {
+            url: '/cash',
+            templateUrl: 'app/module/payment/cheque/payment.cheque.html'
+        })
         
         $urlRouterProvider.otherwise('/course');
     }

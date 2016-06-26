@@ -23,6 +23,7 @@
         <script src="app/app.route.js"></script>
         
         <script src="app/common/services/course.repository.service.js"></script>
+        <script src="app/common/directives/course-search.directive.js"></script>
         
         <script src="app/module/course/course.module.js"></script>
         <script src="app/module/course/course.controller.js"></script>
@@ -37,48 +38,53 @@
         <script src="app/module/teacher/teacher.module.js"></script>
         <script src="app/module/teacher/teacher.controller.js"></script>
         <script src="app/module/teacher/teacher.service.js"></script>
+        
+        <script src="app/module/payment/payment.module.js"></script>
+        <script src="app/module/payment/payment.controller.js"></script>
     </head>
     <body style="background-color: #C6D9F1">
-       
-       
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluids">
-            <span class="navbar-brand">Online Store Management</span>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a ui-sref="studentState">Student</a></li>
-                    <li><a ui-sref="teacherState"><i class="glyphicon glyphicon-plus"></i>Teacher</a></li>
-                    <li><a ui-sref="courseState">Course</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-2 col-xs-5" ui-view="viewA"></div>
-                <div class="col-md-9 col-sm-10 col-xs-7" ui-view="viewB"></div>
-            </div>
-        </div>
-        
-        
-        <ui-view></ui-view>
-       
-       
 <!--
-        <button ui-sref="studentState">Student</button>
-        <button ui-sref="teacherState">Teacher</button>
-        <button ui-sref="courseState">Course</button>
-        <hr>
-        
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluids">
+                <span class="navbar-brand">Online Store Management</span>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a ui-sref="studentState">Student</a></li>
+                        <li><a ui-sref="teacherState">Teacher</a></li>
+                        <li><a ui-sref="courseState">Course</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+-->
+       
+       
+       
+    <div class="navbar navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li><a ui-sref="studentState">Student</a></li>
+        <li><a ui-sref="teacherState">Teacher</a></li>
+        <li><a ui-sref="courseState">Course</a></li>
+        <li><a ui-sref="paymentState">Payment</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link2</a></li>
+      </ul>
+    </div>
+       
+       
+       
+       
+       
+       
+       
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-2 col-xs-5" ui-view="viewA"></div>
                 <div class="col-md-9 col-sm-10 col-xs-7" ui-view="viewB"></div>
             </div>
+            <ui-view></ui-view>
         </div>
-        
-        
-        <ui-view></ui-view>
--->
     </body>
 </html>

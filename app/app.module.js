@@ -7,7 +7,8 @@
         
             'course.module',
             'student.module',
-            'teacher.module'
+            'teacher.module',
+            'payment.module'
         ])
     
 })()

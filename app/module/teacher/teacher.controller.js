@@ -10,8 +10,13 @@
     function TeacherController($stateParams, myData){
         var vm = this;
         vm.stateParam = $stateParams.id;
-        vm.controller = 'TeacherController';
+        vm.controller = 'TeacherController2';
         vm.dataArray = myData;
+        vm.methodsToDir = {};
+        
+        vm.runFUncInsideDirective = function(){
+            vm.methodsToDir.dothemfast();
+        }
     }
     
 })()

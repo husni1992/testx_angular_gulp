@@ -3,3 +3,11 @@
 <div ng-repeat="d in vm.dataArray">
     {{d}};
 </div>
+
+<hr>
+<a ui-sref=".namitha">Load namitha</a>
+<hr>
+
+<ui-view></ui-view>
+<button ng-click="vm.runFUncInsideDirective()"> DO </button>
+<course-search methods="vm.methodsToDir"></course-search>
